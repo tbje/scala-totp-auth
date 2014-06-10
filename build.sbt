@@ -17,3 +17,13 @@ scalaVersion := "2.10.4"
 scalacOptions in (Compile, doc) ++=
   Opts.doc.sourceUrl("https://github.com/marklister/scala-totp-auth/blob/master/src/main/scala/€{TPL_NAME}.scala")
 
+publishTo := {
+  val publishDir = Option(System.getProperty("publish.dir")).getOrElse(System.getProperty("user.dir")) 
+  val publishPath = "/[organization]/[module](_[scalaVersion])/[revision]/[artifact](_[scalaVersion])-[revision](-[classifier]).[ext]"
+  Some(FileRepository(
+    "Groosker Repo", 
+    Resolver.defaultFileConfiguration, 
+    Patterns(true, publishDir + publishPath)
+  ))
+}
+
